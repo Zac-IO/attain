@@ -36,7 +36,6 @@ export default function Index() {
           />
         </View>
       </View>
-      <span></span>
      <ItemDisplay filter={searchText} addToCart={addItemToCart}></ItemDisplay>
       <CartView cart={cart} totalAmount={totalAmount}></CartView>
     </ScrollView>
