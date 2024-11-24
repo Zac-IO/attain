@@ -88,7 +88,7 @@ export default function ItemDisplay(props : {filter: String, addToCart : Functio
         width: '100%',
         padding: 16,
         backgroundColor: "#b8e2f2",
-        alignSelf: 'flex-start'
+        alignSelf: 'flex-start',
       },
       item: {
         marginBottom: 16,

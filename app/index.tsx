@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Image, FlatList } from "react-native";
-import { ScrollView, TextInput } from "react-native"
+import { ScrollView, TextInput } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ItemDisplay from "@/ui/ItemDisplay";
 import ProductCard, { ProductCardProps } from "@/ui/ProductCard";
 import CartView from "@/ui/CartView";
 import { LogBox } from "react-native";
 
-
 LogBox.ignoreAllLogs(true);
 export default function Index() {
   const [searchText, setSearchText] = useState("");
   const [cart, setCart] = useState<ProductCardProps[]>([]);
-  const [cart_amount, setCartAmount] = useState(cart.reduce((total, item) => total.price + item.price, 0))
+  const [cart_amount, setCartAmount] = useState(
+    cart.reduce((total, item) => total.price + item.price, 0)
+  );
   const filterItems = () => {
     setSearchText(searchText);
   };
@@ -40,27 +41,29 @@ export default function Index() {
         </View>
       </View>
       <View style={styles.contentWrapper}>
-     <ItemDisplay filter={searchText} addToCart={addItemToCart}></ItemDisplay>
-     </View>
+        <ItemDisplay
+          filter={searchText}
+          addToCart={addItemToCart}
+        ></ItemDisplay>
+      </View>
       <CartView cart={cart} totalAmount={totalAmount}></CartView>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  contentWrapper : {
-    marginTop: 200
+  contentWrapper: {
+    marginTop: 200,
   },
 
-  title : {
+  title: {
     fontSize: 25,
-    fontWeight : 'bold',
-    marginBottom : 8,
-    alignContent: 'center',
-    marginTop : 20,
-    color:'white'
-
-
+    fontWeight: "bold",
+    marginBottom: 10,
+    alignContent: "flex-start",
+    marginTop: 10,
+    color: "white",
+    transform : [{translateY : -10}]
   },
 
   cart: {},
@@ -71,23 +74,23 @@ const styles = StyleSheet.create({
 
   container: {
     fontFamily: "sans-serif",
-    flex : 1,
+    flex: 1,
   },
 
   banner: {
-    backgroundColor: "#7096B5",
+    backgroundColor: "#356b82",
     color: "#FFFFFF",
     fontSize: 16,
     height: 200,
     flexDirection: "column",
     textAlign: "left",
     paddingLeft: 12,
-    position: 'absolute',
+    position: "absolute",
     paddingTop: 100,
-    zIndex : 1,
+    zIndex: 1,
     top: 0,
-    left:0,
-    right: 0
+    left: 0,
+    right: 0,
   },
 
   input: {
