@@ -39,19 +39,28 @@ export default function Index() {
           />
         </View>
       </View>
+      <View style={styles.contentWrapper}>
      <ItemDisplay filter={searchText} addToCart={addItemToCart}></ItemDisplay>
+     </View>
       <CartView cart={cart} totalAmount={totalAmount}></CartView>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  contentWrapper : {
+    marginTop: 200
+  },
+
   title : {
     fontSize: 25,
     fontWeight : 'bold',
     marginBottom : 8,
     alignContent: 'center',
-    marginTop : 20
+    marginTop : 20,
+    color:'white'
+
+
   },
 
   cart: {},
@@ -62,17 +71,23 @@ const styles = StyleSheet.create({
 
   container: {
     fontFamily: "sans-serif",
-    flex : 1
+    flex : 1,
   },
 
   banner: {
     backgroundColor: "#7096B5",
     color: "#FFFFFF",
     fontSize: 16,
-    height: 170,
+    height: 200,
     flexDirection: "column",
     textAlign: "left",
     paddingLeft: 12,
+    position: 'absolute',
+    paddingTop: 100,
+    zIndex : 1,
+    top: 0,
+    left:0,
+    right: 0
   },
 
   input: {
@@ -85,7 +100,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#FFFFFF",
     borderRadius: 50,
-    height: 50,
+    height: 30,
     paddingHorizontal: 15,
     borderWidth: 1,
     borderColor: "#ccc",

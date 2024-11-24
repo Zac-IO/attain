@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: "#fff",
     justifyContent: "center",
-    width: "50%"
+    width: "50%",
+    borderColor : 'transparent'
   },
   image: {
     width: "100%",
