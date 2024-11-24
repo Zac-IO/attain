@@ -4,13 +4,13 @@ import ProductCard, { ProductCardProps } from './ProductCard';
 import { ScrollView } from 'react-native-gesture-handler';
 
 
-export default function ItemDisplay(props : {filter: String}){
+export default function ItemDisplay(props : {filter: String, addToCart : Function}){
     const [itemsURL, setItemsURL] = useState("https://retoolapi.dev/f0ee0v/items")
     const [data, setData] = useState<ProductCardProps[]>([]);
     const [filteredData, setFilteredData] = useState<ProductCardProps[]>([]);
     const [loading, setLoading] = useState(false);
     const screenWidth = Dimensions.get("window").width;
-    const itemWidth = screenWidth / 2 - 10;
+    const [cart, setCart] = useState([]);
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -50,7 +50,7 @@ export default function ItemDisplay(props : {filter: String}){
         data={filteredData}
         keyExtractor={(item: ProductCardProps) => item.id.toString()} // Ensure `id` is unique
         renderItem={({ item }) => (
-          <ProductCard
+          <ProductCard 
             id={item.id}
             oos={item.oos}
             qoh={item.qoh}
@@ -67,6 +67,7 @@ export default function ItemDisplay(props : {filter: String}){
             nacs_category={item.nacs_category}
             discounted_price={item.discounted_price}
             nacs_subcategory={item.nacs_subcategory}
+            update_cart= {props.addToCart}
           />
         )
       }

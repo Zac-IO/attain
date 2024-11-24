@@ -19,6 +19,7 @@ export interface ProductCardProps {
   nacs_category: string;
   discounted_price: string;
   nacs_subcategory: string;
+  update_cart : (info : string) => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = (props) => {
@@ -28,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
     <View style={[styles.card, {width : itemWidth}]}>
       <Image source={{ uri: props.image }} style={styles.image} resizeMode="contain"/>
       <TouchableOpacity style={styles.add_to_cart}
-              onPress={() => addToCart(item)}
+              onPress={props.update_cart}
             >
               <AntDesign name='pluscircle' size={30} color= '#7096B5'/>
               </TouchableOpacity>

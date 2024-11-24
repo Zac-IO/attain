@@ -3,9 +3,11 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import  Ionicons from '@expo/vector-icons/Ionicons';
 import ItemDisplay from "@/ui/ItemDisplay";
+import ProductCard, { ProductCardProps } from "@/ui/ProductCard";
 
 export default function Index() {
   const [searchText, setSearchText] = useState("");
+  const [cart, setCart] = useState<ProductCardProps[]>([]); 
   const filterItems = () => {
     setSearchText(searchText)
   }
@@ -19,7 +21,7 @@ export default function Index() {
           styles.banner
         }
       >
-      <h1 >Order Book</h1>
+      <h1 >  Order Book</h1>
       
       <View style = {styles.search_bar}>
       <Ionicons name="search" style = {styles.searchIcon} />
@@ -27,7 +29,30 @@ export default function Index() {
       </View>
       </View>
     <span></span>
-      <ItemDisplay filter={searchText}></ItemDisplay>
+      <ItemDisplay filter={searchText} addToCart={setCart}></ItemDisplay>
+      <View style = {styles.cart}>
+        {cart.map((item) => (
+          <ProductCard 
+            id={item.id}
+            oos={item.oos}
+            qoh={item.qoh}
+            name={item.name}
+            size={item.size}
+            upc1={item.upc1}
+            upc2={item.upc2}
+            image={item.image}
+            price={item.price}
+            metadata={item.metadata}
+            supplier={item.supplier}
+            unit_size={item.unit_size}
+            created_at={item.created_at}
+            nacs_category={item.nacs_category}
+            discounted_price={item.discounted_price}
+            nacs_subcategory={item.nacs_subcategory}
+            update_cart= {props.addToCart}
+          />
+        ))}
+      </View>
     </ScrollView>
 
   );
@@ -47,8 +72,10 @@ const styles = StyleSheet.create({
     backgroundColor : '#7096B5',
     color: "#FFFFFF",
     fontSize : 16,
-    height: 150,
-    flexDirection : 'column'
+    height: 170,
+    flexDirection : 'column',
+    textAlign : 'left',
+    paddingLeft : 12
   },
 
   input : {
