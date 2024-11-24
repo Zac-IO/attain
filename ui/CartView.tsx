@@ -43,7 +43,7 @@ export default function CartView({ cart, totalAmount } : {cart : ProductCardProp
       {cart.length > 0 && (
         <View style={styles.cartSummary}>
           <Text style={styles.cartSummaryText}>Total items: {cart.length}</Text>
-          <Text style={styles.cartSummaryText}>Total Price: ${totalAmount}</Text>
+          <Text style={styles.cartSummaryText}>Total Price: ${totalAmount.toFixed(2)}</Text>
         </View>
       )}
 
@@ -53,9 +53,10 @@ export default function CartView({ cart, totalAmount } : {cart : ProductCardProp
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    alignSelf : 'center',
     padding: 20,
     backgroundColor: '#F8F8F8',
+    alignItems : 'center'
   },
   cartTitle: {
     fontSize: 24,

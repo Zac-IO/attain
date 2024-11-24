@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Image, FlatList } from "react-native";
-import { ScrollView, TextInput } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ItemDisplay from "@/ui/ItemDisplay";
 import ProductCard, { ProductCardProps } from "@/ui/ProductCard";
@@ -25,8 +25,7 @@ export default function Index() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.banner}>
-        <h1> Order Book</h1>
-
+        <Text style={styles.title}>Order Book</Text>
         <View style={styles.search_bar}>
           <Ionicons name="search" style={styles.searchIcon} />
           <TextInput
@@ -38,13 +37,21 @@ export default function Index() {
         </View>
       </View>
       <span></span>
-      <ItemDisplay filter={searchText} addToCart={addItemToCart}></ItemDisplay>
+     <ItemDisplay filter={searchText} addToCart={addItemToCart}></ItemDisplay>
       <CartView cart={cart} totalAmount={totalAmount}></CartView>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  title : {
+    fontSize: 25,
+    fontWeight : 'bold',
+    marginBottom : 8,
+    alignContent: 'center',
+    marginTop : 20
+  },
+
   cart: {},
 
   searchIcon: {
