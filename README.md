@@ -31,5 +31,5 @@ This is an Inventory App that allows users to:
 
 4. Search and add items to cart by clicking + button in product image. View your cart by scrolling to bottom of document.  
 
-![Alt text](demo_one.png)
-![Alt text](demo_two.png)
+<img src="demo_one.png" alt="Demo Image 1" width="300"/>
+<img src="demo_two.png" alt="Demo Image 2" width="300"/>
