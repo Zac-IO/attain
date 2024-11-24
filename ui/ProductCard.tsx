@@ -42,17 +42,16 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
       <TouchableOpacity style={styles.add_to_cart} onPress={() => props.update_cart?.(props)}>
         <AntDesign name="pluscircle" size={30} color="#7096B5" />
       </TouchableOpacity>
-
+      <Text style={styles.supplier}>Supplier: {props.supplier}</Text>
       <Text style={styles.name}>{props.name}</Text>
       <Text
         style={[styles.price, props.discounted_price && styles.crossed_out]}
       >
         ${props.price}
       </Text>
-      <Text style={styles.supplier}>Supplier: {props.supplier}</Text>
       {props.discounted_price && (
         <Text style={styles.discountedPrice}>
-          Discounted: ${props.discounted_price}
+          Discounted price: ${props.discounted_price}
         </Text>
       )}
     </View>
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
   },
   supplier: {
     fontSize: 12,
-    color: "#555",
+    color: "blue",
     marginTop: 5,
   },
   discountedPrice: {
