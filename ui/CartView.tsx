@@ -1,37 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import ProductCard, { ProductCardProps } from "@/ui/ProductCard"; // Assuming ProductCard is used for individual items
+import ProductCard, { ProductCardProps } from "@/ui/ProductCard"; 
 
 export default function CartView({ cart, totalAmount } : {cart : ProductCardProps[], totalAmount : number}) {
-  // Render each cart item
-  const renderCartItem = ({ item }) => {
-    return (
-      <View style={styles.cartItem}>
-        <ProductCard id={item.id}
-            oos={item.oos}
-            qoh={item.qoh}
-            name={item.name}
-            size={item.size}
-            upc1={item.upc1}
-            upc2={item.upc2}
-            image={item.image}
-            price={item.price}
-            metadata={item.metadata}
-            supplier={item.supplier}
-            unit_size={item.unit_size}
-            created_at={item.created_at}
-            nacs_category={item.nacs_category}
-            discounted_price={item.discounted_price}
-            nacs_subcategory={item.nacs_subcategory}/> 
-      </View>
-    );
-  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.cartTitle}>Your Cart</Text>
 
-      {/* If there are no items in the cart */}
       {cart.length === 0 ? (
         <View style={styles.emptyCart}>
           <Text style={styles.emptyText}>Your cart is empty</Text>
@@ -39,12 +15,31 @@ export default function CartView({ cart, totalAmount } : {cart : ProductCardProp
       ) : (
         <FlatList
           data={cart}
-          renderItem={renderCartItem}
+          renderItem={({ item }) => (
+            <ProductCard 
+              id={item.id}
+              oos={item.oos}
+              qoh={item.qoh}
+              name={item.name}
+              size={item.size}
+              upc1={item.upc1}
+              upc2={item.upc2}
+              image={item.image}
+              price={item.price}
+              metadata={item.metadata}
+              supplier={item.supplier}
+              unit_size={item.unit_size}
+              created_at={item.created_at}
+              nacs_category={item.nacs_category}
+              discounted_price={item.discounted_price}
+              nacs_subcategory={item.nacs_subcategory}
+            />
+          )
+        }
           contentContainerStyle={styles.cartList}
         />
       )}
 
-      {/* Cart Summary Section */}
       {cart.length > 0 && (
         <View style={styles.cartSummary}>
           <Text style={styles.cartSummaryText}>Total items: {cart.length}</Text>
