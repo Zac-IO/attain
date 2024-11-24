@@ -9,6 +9,7 @@ import CartView from "@/ui/CartView";
 export default function Index() {
   const [searchText, setSearchText] = useState("");
   const [cart, setCart] = useState<ProductCardProps[]>([]);
+  const [cart_amount, setCartAmount] = useState(cart.reduce((total, item) => total.price + item.price, 0))
   const filterItems = () => {
     setSearchText(searchText);
   };
@@ -17,7 +18,7 @@ export default function Index() {
   };
 
   const totalAmount: number = cart.reduce(
-    (total, item) => total + item.price,
+    (total, item) => Number(total) + Number(item.price),
     0
   );
 
