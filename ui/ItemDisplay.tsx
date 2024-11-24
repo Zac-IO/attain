@@ -9,8 +9,6 @@ export default function ItemDisplay(props : {filter: String, addToCart : Functio
     const [data, setData] = useState<ProductCardProps[]>([]);
     const [filteredData, setFilteredData] = useState<ProductCardProps[]>([]);
     const [loading, setLoading] = useState(false);
-    const screenWidth = Dimensions.get("window").width;
-    const [cart, setCart] = useState([]);
     useEffect(() => {
       const fetchData = async () => {
         try {
