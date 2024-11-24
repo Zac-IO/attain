@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Text, View, StyleSheet, Image, FlatList } from "react-native";
 import { ScrollView, TextInput } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ItemDisplay from "@/ui/ItemDisplay";
-import ProductCard, { ProductCardProps } from "@/ui/ProductCard";
+import { ProductCardProps } from "@/ui/ProductCard";
 import CartView from "@/ui/CartView";
 import { LogBox } from "react-native";
 
 LogBox.ignoreAllLogs(true);
+
 export default function Index() {
+  // initialize state
   const [searchText, setSearchText] = useState("");
   const [cart, setCart] = useState<ProductCardProps[]>([]);
-  const [cart_amount, setCartAmount] = useState(
-    cart.reduce((total, item) => total.price + item.price, 0)
-  );
   const filterItems = () => {
     setSearchText(searchText);
   };
+
+  // write callbacks
   const addItemToCart = (item) => {
     setCart((prevCart) => [...prevCart, item]);
   };
@@ -63,10 +64,8 @@ const styles = StyleSheet.create({
     alignContent: "flex-start",
     marginTop: 10,
     color: "white",
-    transform : [{translateY : -10}]
+    transform: [{ translateY: -10 }],
   },
-
-  cart: {},
 
   searchIcon: {
     padding: 10,

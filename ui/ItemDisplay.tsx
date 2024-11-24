@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react'
-import { FlatList, View, StyleSheet, Dimensions, SafeAreaView} from 'react-native';
+import { FlatList, View, StyleSheet, SafeAreaView} from 'react-native';
 import ProductCard, { ProductCardProps } from './ProductCard';
-import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default function ItemDisplay(props : {filter: String, addToCart : Function}){
