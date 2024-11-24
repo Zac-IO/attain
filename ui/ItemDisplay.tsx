@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import { FlatList, View, StyleSheet, Dimensions} from 'react-native';
+import { FlatList, View, StyleSheet, Dimensions, SafeAreaView} from 'react-native';
 import ProductCard, { ProductCardProps } from './ProductCard';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -45,6 +45,7 @@ export default function ItemDisplay(props : {filter: String, addToCart : Functio
 
          
     return (
+      <SafeAreaView style={styles.safeArea}>
       <FlatList
         style={styles.container}
         data={filteredData}
@@ -75,14 +76,19 @@ export default function ItemDisplay(props : {filter: String, addToCart : Functio
       
         contentContainerStyle={styles.list}
       />
+      </SafeAreaView>
     )
   }
 
     const styles = StyleSheet.create({
+      safeArea : {
+        width: '100%'
+      },
       container: {
-        flex: 1,
+        width: '100%',
         padding: 16,
         backgroundColor: "#b8e2f2",
+        alignSelf: 'flex-start'
       },
       item: {
         marginBottom: 16,

@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import ProductCard, { ProductCardProps } from "@/ui/ProductCard"; 
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CartView({ cart, totalAmount } : {cart : ProductCardProps[], totalAmount : number}) {
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.cartTitle}>Your Cart</Text>
 
       {cart.length === 0 ? (
@@ -15,6 +16,7 @@ export default function CartView({ cart, totalAmount } : {cart : ProductCardProp
       ) : (
         <FlatList
           data={cart}
+          keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <ProductCard 
               id={item.id}
@@ -47,7 +49,7 @@ export default function CartView({ cart, totalAmount } : {cart : ProductCardProp
         </View>
       )}
 
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -56,7 +58,8 @@ const styles = StyleSheet.create({
     alignSelf : 'center',
     padding: 20,
     backgroundColor: '#F8F8F8',
-    alignItems : 'center'
+    alignItems : 'center',
+    flex: 1
   },
   cartTitle: {
     fontSize: 24,

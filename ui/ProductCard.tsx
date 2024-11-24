@@ -31,7 +31,7 @@ export interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = (props) => {
   const screenWidth = Dimensions.get("window").width;
-  const itemWidth = screenWidth / 2 - 10;
+  const itemWidth = screenWidth / 2 - 30;
   return (
     <View style={[styles.card, { width: itemWidth }]}>
       <Image
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: "#fff",
     justifyContent: "center",
+    width: "50%"
   },
   image: {
     width: "100%",

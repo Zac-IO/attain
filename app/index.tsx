@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
 
   container: {
     fontFamily: "sans-serif",
+    flex : 1
   },
 
   banner: {
