@@ -30,3 +30,6 @@ This is an Inventory App that allows users to:
 3. Select option to open app with platform of choice e.g. web, iOS, Android
 
 4. Search and add items to cart by clicking + button in product image. View your cart by scrolling to bottom of document.  
+
+![Alt text] ("./demo_one.png")
+![Alt text] ("./demo_two.png")
