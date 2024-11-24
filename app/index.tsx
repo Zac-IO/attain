@@ -5,7 +5,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import ItemDisplay from "@/ui/ItemDisplay";
 import ProductCard, { ProductCardProps } from "@/ui/ProductCard";
 import CartView from "@/ui/CartView";
+import { LogBox } from "react-native";
 
+
+LogBox.ignoreAllLogs(true);
 export default function Index() {
   const [searchText, setSearchText] = useState("");
   const [cart, setCart] = useState<ProductCardProps[]>([]);
