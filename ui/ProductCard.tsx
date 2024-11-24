@@ -11,7 +11,7 @@ export interface ProductCardProps {
   upc1: string;
   upc2: string;
   image: string;
-  price: string;
+  price: number;
   metadata: string;
   supplier: string;
   unit_size: string;
@@ -19,7 +19,7 @@ export interface ProductCardProps {
   nacs_category: string;
   discounted_price: string;
   nacs_subcategory: string;
-  update_cart : (info : string) => void;
+  update_cart : (info : ProductCardProps) => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = (props) => {

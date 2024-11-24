@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { useEffect, useState } from "react";
+import { Text, View, StyleSheet, Image, FlatList } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import  Ionicons from '@expo/vector-icons/Ionicons';
 import ItemDisplay from "@/ui/ItemDisplay";
 import ProductCard, { ProductCardProps } from "@/ui/ProductCard";
+import CartView from "@/ui/CartView";
 
 export default function Index() {
   const [searchText, setSearchText] = useState("");
@@ -11,6 +12,12 @@ export default function Index() {
   const filterItems = () => {
     setSearchText(searchText)
   }
+  const addItemToCart = (item) => {
+    setCart((prevCart) => [...prevCart, item]);
+  };
+
+  const totalAmount: number = cart.reduce((total, item) => total + item.price, 0);
+
   return (
     <ScrollView
       style={
@@ -29,36 +36,18 @@ export default function Index() {
       </View>
       </View>
     <span></span>
-      <ItemDisplay filter={searchText} addToCart={setCart}></ItemDisplay>
-      <View style = {styles.cart}>
-        {cart.map((item) => (
-          <ProductCard 
-            id={item.id}
-            oos={item.oos}
-            qoh={item.qoh}
-            name={item.name}
-            size={item.size}
-            upc1={item.upc1}
-            upc2={item.upc2}
-            image={item.image}
-            price={item.price}
-            metadata={item.metadata}
-            supplier={item.supplier}
-            unit_size={item.unit_size}
-            created_at={item.created_at}
-            nacs_category={item.nacs_category}
-            discounted_price={item.discounted_price}
-            nacs_subcategory={item.nacs_subcategory}
-            update_cart= {props.addToCart}
-          />
-        ))}
-      </View>
+      <ItemDisplay filter={searchText} addToCart={addItemToCart}></ItemDisplay>
+      <CartView cart={cart} totalAmount={totalAmount}>
+      </CartView>
     </ScrollView>
 
   );
 }
 
 const styles = StyleSheet.create({
+  cart : {
+
+  },
 
   searchIcon : {
     padding: 10
