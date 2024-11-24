@@ -14,22 +14,26 @@ This is an Inventory App that allows users to:
 
     View cart details: A cart view at the bottom of the screen displays the current items in the cart along with the total amount.
 
+
+
 ## Get started
 
-1. Install dependencies
+1. Clone this repo and cd into directory
+
+2. Open terminal and Install dependencies
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. Start the app
 
    ```bash
     npx expo start
    ```
-3. Select option to open app with platform of choice e.g. web, iOS, Android
+4. Select option to open app with platform of choice e.g. web, iOS, Android
 
-4. Search and add items to cart by clicking + button in product image. View your cart by scrolling to bottom of document.  
+5. Search and add items to cart by clicking + button in product image. View your cart by scrolling to bottom of document.  
 
 <img src="demo_one.png" alt="Demo Image 1" width="300"/>
 <img src="demo_two.png" alt="Demo Image 2" width="300"/>
